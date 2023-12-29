@@ -64,7 +64,39 @@ class AdminController extends Controller
     function deleteAppointment($id) {
         $appointment = Appointment::findOrFail($id);
         $appointment->delete();
-
+    
         return redirect()->route('admin.viewAppointments')->with('success', 'Appointment deleted.');
+    }
+
+    function addSchedule(Request $request){
+        $validateData = $request->validate([
+            'name' => 'required',
+            'doctor_id' => 'required',
+            'hari' => 'required',
+            'schedule_start' => 'required',
+            'schedule_end' => 'required',
+            'specialization' => 'required'
+        ]);
+
+        $schedule = Schedule::create([
+            'name' => $validateData['name'],
+            'doctor_id' => $validateData['doctor_id'],
+            'hari' => $validateData['hari'],
+            'specialization' => $validateData['specialization'],
+            'schedule_start' => $validateData['schedule_start'],
+            'schedule_end' => $validateData['schedule_end'],
+        ]);
+
+        if($schedule){
+            return redirect()->route('admin.dashboard')->with('success', 'Schedule added successfully');
+        } else {
+            return redirect()->route('admin.dashboard')->with('error', 'Failed to add schedule.');
+        }
+        
+    }
+
+    function showAddScheduleForm(Request $request){
+        $schedules = Schedule::all();
+        return view('admin.showAddScheduleForm');
     }
 }
