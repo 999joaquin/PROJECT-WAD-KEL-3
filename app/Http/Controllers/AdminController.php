@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Doctor;
 use App\Models\Appointment;
+use App\Models\Patient;
+use App\Models\User;
+use App\Models\Detail;
 
 class AdminController extends Controller
 {
@@ -13,90 +17,42 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    function addDoctor(Request $request){
-        $validateData = $request->validate([
-            'name' => 'required',
-            'specialization' => 'required'
-        ]);
+    function showPatientsDetails($patientId){ // najma
+            $patient = Patient::findOrFail($patientId);
+            return view('admin.add-details', compact('patient'));
+        }
 
-        $doctor = Doctor::create([
-            'name' => $validateData['name'],
-            'specialization' => $validateData['specialization']
-        ]);
+        function addPatientDetails(Request $request, $patientId){ // najma
+            $request->validate([
+                'medical_record' => 'required',
+                'disease' => 'required',
+                'medication' => 'required'
+            ]);
 
-        if($doctor){
-            return redirect()->route('admin.dashboard')->with('success', 'Doctor added successfully');
-        } else {
-            return redirect()->route('admin.dashboard')->with('error', 'Failed to add doctor.');
+            Detail::create([
+                'patient_id' => $patientId,
+                'medical_record' => $request->medical_record,
+                'disease' => $request->disease,
+                'medication' => $request->medication
+            ]);
+
+            return redirect()->route('admin.selectPatient')->with('success', 'Sukses');
+        }
+
+        function selectPatient(){ // najma
+            $patients = Patient::all();
+            return view('admin.select-patient', compact('patients'));
+        }
+
+        function showPatientFullDetails($patientId){ // najma
+            $patient = Patient::with('details')->findOrFail($patientId);
+            return view('admin.patient-details', compact('patient'));
+        }
+
+        function deleteDetail($detailId){ // najma
+            $detail = Detail::findOrFail($detailId);
+            $detail -> delete();
+
+            return back()->with('success', 'Berhasil di hapus');
         }
     }
-
-    function showAddDoctorForm(){
-        return view('admin.add-doctor');
-    }
-
-    function viewDoctors(){
-        $doctors = Doctor::all();
-        return view('admin.view-doctors', compact('doctors'));
-    }
-
-    function viewAppointments(){
-        $appointments = Appointment::with('doctor')->get();
-        return view('admin.view-appointments', compact('appointments'));
-    }
-
-    function editAppointment($id){
-        $appointment = Appointment::findOrFail($id);
-        return view('admin.edit-appointment', compact('appointment'));
-    }
-
-    function updateAppointment(Request $request, $id){
-        $validateData = $request->validate([
-            'appointment_date' => 'required|date',
-        ]);
-
-        $appointment = Appointment::findOrFail($id);
-        $appointment->update($validateData);
-
-        return redirect()->route('admin.viewAppointments')->with('success', 'Appointment updated.');
-    }
-
-    function deleteAppointment($id) {
-        $appointment = Appointment::findOrFail($id);
-        $appointment->delete();
-    
-        return redirect()->route('admin.viewAppointments')->with('success', 'Appointment deleted.');
-    }
-
-    function addSchedule(Request $request){
-        $validateData = $request->validate([
-            'name' => 'required',
-            'doctor_id' => 'required',
-            'hari' => 'required',
-            'schedule_start' => 'required',
-            'schedule_end' => 'required',
-            'specialization' => 'required'
-        ]);
-
-        $schedule = Schedule::create([
-            'name' => $validateData['name'],
-            'doctor_id' => $validateData['doctor_id'],
-            'hari' => $validateData['hari'],
-            'specialization' => $validateData['specialization'],
-            'schedule_start' => $validateData['schedule_start'],
-            'schedule_end' => $validateData['schedule_end'],
-        ]);
-
-        if($schedule){
-            return redirect()->route('admin.dashboard')->with('success', 'Schedule added successfully');
-        } else {
-            return redirect()->route('admin.dashboard')->with('error', 'Failed to add schedule.');
-        }
-        
-    }
-
-    function showAddScheduleForm(Request $request){
-        $schedules = Schedule::all();
-        return view('admin.showAddScheduleForm');
-    }
-}
