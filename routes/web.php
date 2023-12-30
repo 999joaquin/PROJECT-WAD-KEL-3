@@ -33,14 +33,17 @@ Route::post('/register', [AuthController::class, 'register']);
 // Route User
 Route::middleware(['auth', 'user'])->group(function() {
     Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
-    Route::get('/user/patient-registration', [UserController::class, 'showPatientForm'])->name('user.patient.form');
-
+    Route::get('/user/patient-registration', [UserController::class, 'showRegistrationForm'])->name('user.register.form');
+    Route::post('/user/register', [UserController::class, 'storeRegistration'])->name('user.register.store');
 });
 
 // Route Admin
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/admin/patients', [AdminController::class, 'viewPatients'])->name('admin.view.patients');
+    Route::get('/admin/patients', [AdminController::class, 'viewPatients'])->name('admin.patients.dashboard');
+    Route::get('/admin/patients/{patient}/edit', [AdminController::class, 'editPatients'])->name('admin.patients.edit');
+    Route::put('/admin/patients/{patient}', [AdminController::class, 'updatePatients'])->name('admin.patients.update');
+    Route::delete('/admin/patients/{patient}', [AdminController::class, 'destroyPatients'])->name('admin.patients.destroy');
 });
 
 
