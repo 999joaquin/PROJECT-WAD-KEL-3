@@ -13,4 +13,8 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
+    public function viewPatients(){
+        return view('admin.view-patients');
+    }
+
 }

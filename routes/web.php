@@ -33,12 +33,14 @@ Route::post('/register', [AuthController::class, 'register']);
 // Route User
 Route::middleware(['auth', 'user'])->group(function() {
     Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/user/patient-registration', [UserController::class, 'showPatientForm'])->name('user.patient.form');
 
 });
 
 // Route Admin
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/patients', [AdminController::class, 'viewPatients'])->name('admin.view.patients');
 });
 
 

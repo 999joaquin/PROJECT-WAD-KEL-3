@@ -10,4 +10,8 @@ class UserController extends Controller
     function dashboard(){
         return view('user.dashboard');
     }
+
+    function showPatientsForm(){
+        return view('user.register-patient.blade.php');
+    }
 }
