@@ -45,6 +45,15 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::post('/admin/add-doctor', [AdminController::class, 'addDoctor'])->name('admin.addDoctor');
     Route::get('/admin/view-doctors', [AdminController::class, 'viewDoctors'])->name('admin.viewDoctors');
     Route::get('/admin/appointments', [AdminController::class, 'viewAppointments'])->name('admin.viewAppointments');
+
+    Route::post('/admin/add-medicine', [AdminController::class, 'addMedicine'])->name('admin.addMedicine');
+    Route::get('/admin/detailMedicin/{id}', [AdminController::class, 'detailMedicine'])->name('admin.detailMedicine');    
+    Route::get('/admin/view-medicine', [AdminController::class, 'showMedicine'])->name('admin.showMedicine');
+    Route::get('/admin/add-medicines', [AdminController::class, 'addMedicines'])->name('admin.addMedicines');
+    Route::delete('/admin/detailMedicin/{id}', [AdminController::class, 'deleteMedicine'])->name('admin.deleteMedicine');
+    Route::put('/admin/editMedicine/{id}', [AdminController::class, 'updateMedicine'])->name('admin.updateMedicine');
+    Route::get('/admin/edit-medicines/{id}', [AdminController::class, 'editMedicines'])->name('admin.editMedicines');
+   
     Route::get('/admin/appointments/{id}/edit', [AdminController::class, 'editAppointment'])->name('admin.editAppointment');
     Route::put('/admin/appointments/{id}', [AdminController::class, 'updateAppointment'])->name('admin.updateAppointment');
     Route::delete('/admin/appointments/{id}', [AdminController::class, 'deleteAppointment'])->name('admin.deleteAppointment');

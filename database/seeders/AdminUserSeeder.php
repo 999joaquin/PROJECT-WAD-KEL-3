@@ -17,7 +17,7 @@ class AdminUserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@telyucare.com',
             'password' => bcrypt('admin'),
-            'nim' => '001',
+            // 'nim' => '001',
             'role' => 'admin',
         ]);
     }

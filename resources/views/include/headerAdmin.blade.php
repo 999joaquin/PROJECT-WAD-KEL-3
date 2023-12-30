@@ -14,6 +14,10 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('admin.showAddDoctorForm') }}">Add Doctor</a>
         </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('admin.showMedicine') }}">Medicine</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('logout') }}">Logout</a>
         </li>
