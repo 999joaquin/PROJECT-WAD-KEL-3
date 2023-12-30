@@ -41,8 +41,11 @@ Route::middleware(['auth', 'user'])->group(function() {
 // Route Admin
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/view-patients', [AdminController::class, 'viewPatients'])->name('admin.viewDoctors');
     Route::get('/admin/add-doctor', [AdminController::class, 'showAddDoctorForm'])->name('admin.showAddDoctorForm');
     Route::post('/admin/add-doctor', [AdminController::class, 'addDoctor'])->name('admin.addDoctor');
+    Route::get('/admin/add-schedule', [AdminController::class, 'showAddScheduleForm'])->name('admin.showAddScheduleForm');
+    Route::post('/admin/add-schedule', [AdminController::class, 'addSchedule'])->name('admin.addSchedule');
     Route::get('/admin/view-doctors', [AdminController::class, 'viewDoctors'])->name('admin.viewDoctors');
     Route::get('/admin/appointments', [AdminController::class, 'viewAppointments'])->name('admin.viewAppointments');
     Route::get('/admin/appointments/{id}/edit', [AdminController::class, 'editAppointment'])->name('admin.editAppointment');
