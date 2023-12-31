@@ -43,6 +43,4 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/patients', [AdminController::class, 'viewPatients'])->name('admin.view.patients');
 });
 
-
-
-
+Route::get('/admin/patients', [AdminController::class, 'viewPatients'])->name('admin.view.patients');
