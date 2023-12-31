@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <form action="{{ route('admin.updateDoctor', $doctor->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
+                        @met
 
                         <div class="form-group">
                             <label for="name">Doctor's Name:</label>
