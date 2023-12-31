@@ -40,6 +40,7 @@
         <button type="submit" class="btn btn-primary container-fluid">Create Appointment</button>
     </form>
 
+    <!-- Script buat filtering dokter yang muncul pada saat pemilihan specialization-->
     <script>
         function filterDoctors() {
             var specialization = document.getElementById('specialization').value;

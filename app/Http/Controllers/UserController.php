@@ -56,4 +56,12 @@ class UserController extends Controller
                          ->with('doctors', $doctors);
     }
 
+    function viewSchedule(){
+        
+    }
+
+    function registerPatients(){
+        return view('')
+    }
+
 }

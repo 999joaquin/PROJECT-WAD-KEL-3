@@ -33,21 +33,18 @@ Route::post('/register', [AuthController::class, 'register']);
 // Route User
 Route::middleware(['auth', 'user'])->group(function() {
     Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
-    Route::get('/user/appointment', [UserController::class, 'showAppointmentForm'])->name('user.showAppointmentForm');
-    Route::get('/user/show-appointment-form', [UserController::class, 'showAppointmentForm'])->name('user.showAppointmentForm');
-    Route::post('/user/create-appointment', [UserController::class, 'createAppointment'])->name('user.createAppointment');
+
 });
 
 // Route Admin
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/admin/add-doctor', [AdminController::class, 'showAddDoctorForm'])->name('admin.showAddDoctorForm');
-    Route::post('/admin/add-doctor', [AdminController::class, 'addDoctor'])->name('admin.addDoctor');
-    Route::get('/admin/view-doctors', [AdminController::class, 'viewDoctors'])->name('admin.viewDoctors');
-    Route::get('/admin/appointments', [AdminController::class, 'viewAppointments'])->name('admin.viewAppointments');
-    Route::get('/admin/appointments/{id}/edit', [AdminController::class, 'editAppointment'])->name('admin.editAppointment');
-    Route::put('/admin/appointments/{id}', [AdminController::class, 'updateAppointment'])->name('admin.updateAppointment');
-    Route::delete('/admin/appointments/{id}', [AdminController::class, 'deleteAppointment'])->name('admin.deleteAppointment');
+    Route::get('/admin/patients/{patientId}/add-detail', [AdminController::class, 'showPatientsDetails'])->name('admin.details.create');
+    Route::post('/admin/patients/{patientId}/add-detail', [AdminController::class, 'addPatientDetails'])->name('admin.details.store');
+    Route::get('/admin/select-patient', [AdminController::class, 'selectPatient'])->name('admin.selectPatient');
+    Route::get('/admin/patients/{patientId}/details', [AdminController::class, 'showPatientFullDetails'])->name('admin.patientDetails');
+    Route::delete('/admin/details/{detailId}', [AdminController::class, 'deleteDetail'])->name('admin.detail.delete');
+
 });
 
 
