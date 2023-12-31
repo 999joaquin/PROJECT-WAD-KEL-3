@@ -15,7 +15,7 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    function addSchedule(Request $request){ // ario
+    function addSchedule(Request $request){ 
         $validateData = $request->validate([
             'doctor_id' => 'required',
             'day' => 'required',
@@ -57,6 +57,11 @@ class AdminController extends Controller
     $schedule->update($validateData);
 
     return redirect()->route('admin.viewSchedules')->with('success', 'Schedule updated successfully.');
-
 }
+    function deleteSchedule($scheduleId){
+        $schedule = Schedule::findOrFail($scheduleId);
+        $schedule->delete();
+
+        return redirect()->route('admin.viewSchedules')->with('success', 'Schedule deleted successfully.');
+    }
 }
