@@ -38,4 +38,49 @@ class UserController extends Controller
 
         return redirect()->route('user.dashboard')->with('success', 'Patients telah berhasil ditambahkan');
     }
+
+    //niluh
+    function createAppointment(Request $request) {
+        $validatedData = $request->validate([
+            'specialization' => 'required',
+            'doctor_id' => 'required|exists:doctors,id',
+            'appointment_date' => 'required|date',
+            'appointment_time' => 'required',
+            'keluhan' => 'required',
+        ]);
+
+        if (!Auth::check()){
+            return redirect()->route('login')->with('error', 'Harus login terlebih dahulu sebelum membuat janji temu');
+        }
+
+        $appointment = new Appointment([
+            'user_id' => Auth::id(),
+            'patient_name' => Auth::user()->name,
+            'nim' => Auth::user()->nim,
+            'doctor_id' => $validatedData['doctor_id'],
+            'appointment_date' => $validatedData['appointment_date'],
+            'appointment_time' => $validatedData['appointment_time'],
+            'keluhan' => $validatedData['keluhan'],
+        ]);
+
+        $appointment->save();
+
+        return redirect()->route('user.dashboard')->with('success', 'Janji temu berhasil dibuat');
+    }
+
+    function showAppointmentForm() {
+        $specializations = Doctor::distinct()->pluck('specialization');
+        $doctors = Doctor::all();
+        return view('user.create-appointment', compact('specializations', 'doctors'));
+    }
+
+    function handleSpecialization(Request $request) {
+        $specialization = $request->input('specialization');
+        $doctors = Doctor::where('specialization', $specialization)->get();
+
+        return redirect()->route('user.showAppointmentForm')
+                         ->with('selectedSpecialization', $specialization)
+                         ->with('doctors', $doctors);
+    }
+    //
 }
