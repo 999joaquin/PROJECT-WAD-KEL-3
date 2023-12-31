@@ -45,4 +45,18 @@ class AdminController extends Controller
         return view('admin.edit-schedule', compact('schedule', 'doctors'));
     }
 
+    function updateSchedule(Request $request, $scheduleId){
+        $validateData = $request->validate([
+            'doctor_id' => 'required',
+            'day' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+        ]);
+
+    $schedule = Schedule::findOrFail($scheduleId);
+    $schedule->update($validateData);
+
+    return redirect()->route('admin.viewSchedules')->with('success', 'Schedule updated successfully.');
+
+}
 }
