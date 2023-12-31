@@ -29,4 +29,9 @@ class AdminController extends Controller
         
     }
 
+    function showAddScheduleForm(Request $request){
+        $doctors = Doctor::all();
+        return view ('admin.add-schedule', compact('doctors'));
+    }
+
 }
