@@ -17,4 +17,9 @@ class UserController extends Controller
         $doctors = Doctor::all();
         return view('user.list-doctors', compact('doctors'));
     }
+
+    function viewDoctorSchedule($doctorId){
+        $doctor = Doctor::with('schedules')->findOrFail($doctorId);
+        return view('user.view-schedule', compact('doctor'));
+    }
 }
