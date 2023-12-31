@@ -40,6 +40,14 @@ Route::middleware(['auth', 'user'])->group(function() {
 // Route Admin
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/view-patients', [AdminController::class, 'viewPatients'])->name('admin.viewDoctors');
+    Route::get('/admin/add-doctor', [AdminController::class, 'showAddDoctorForm'])->name('admin.showAddDoctorForm');
+    Route::post('/admin/add-doctor', [AdminController::class, 'addDoctor'])->name('admin.addDoctor');
+    Route::get('/admin/view-doctors', [AdminController::class, 'viewDoctors'])->name('admin.viewDoctors');
+    Route::get('/admin/doctors/{id}/edit', [AdminController::class, 'editDoctor'])->name('admin.editDoctor');
+    Route::put('/admin/doctors/{id}', [AdminController::class, 'updateDoctor'])->name('admin.updateDoctor');
+    Route::delete('/admin/doctors/{id}', [AdminController::class, 'deleteDoctor'])->name('admin.deleteDoctor');
     Route::get('/admin/patients', [AdminController::class, 'viewPatients'])->name('admin.patients.dashboard');
     Route::get('/admin/patients/{patient}/edit', [AdminController::class, 'editPatients'])->name('admin.patients.edit');
     Route::put('/admin/patients/{patient}', [AdminController::class, 'updatePatients'])->name('admin.patients.update');
