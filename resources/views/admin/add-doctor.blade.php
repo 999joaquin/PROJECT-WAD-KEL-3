@@ -11,21 +11,21 @@
                     @csrf
                     <div class="form-group">
                         <input type="text" id="name" name="name" class="form-control" required>
-                        <label for="name">Doctor's Name</label>
+                        <label for="name">Doctor's Name:</label>
                     </div>
 
                     <div class="form-group">
                         <input type="text" id="specialization" name="specialization" class="form-control" required>
-                        <label for="specialization">Specialization</label>
+                        <label for="specialization">Specialization:</label>
                     </div>
                     <div class="form-group">
                         <input type="text" id="education" name="education" class="form-control" required>
-                        <label for="education">Education</label>
+                        <label for="education">Education:</label>
                     </div>
 
                     <div class="form-group">
                         <input type="file" id="image" name="image" class="form-control-file">
-                        <label for="image">Doctor's Image</label>
+                        <label for="image">Doctor's Image:</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Add Doctor</button>
                 </form>

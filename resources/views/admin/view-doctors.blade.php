@@ -10,7 +10,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>No</th>
+                                    <th>No.</th>
                                     <th>Name</th>
                                     <th>Specialization</th>
                                     <th>Education</th>

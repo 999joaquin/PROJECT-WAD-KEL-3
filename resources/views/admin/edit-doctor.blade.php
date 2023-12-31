@@ -12,17 +12,17 @@
                         @method('PUT')
                         <div class="form-group">
                             <input type="text" id="name" name="name" class="form-control" value="{{ $doctor->name }}" required>
-                            <label for="name">Doctor's Name</label>
+                            <label for="name">Doctor's Name:</label>
                         </div>
 
                         <div class="form-group">
                             <input type="text" id="specialization" name="specialization" class="form-control" value="{{ $doctor->specialization }}" required>
-                            <label for="specialization">Specialization</label>
+                            <label for="specialization">Specialization:</label>
                         </div>
 
                         <div class="form-group">
                             <input type="text" id="education" name="education" class="form-control" value="{{ $doctor->education }}" required>
-                            <label for="education">Education</label>
+                            <label for="education">Education:</label>
                         </div>
 
                         <div class="form-group">
