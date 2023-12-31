@@ -13,7 +13,7 @@ class Doctor extends Model
         'name',
         'specialization',
         'education',
-        'image'
+        'image',
     ];
     
     public function schedules(){
