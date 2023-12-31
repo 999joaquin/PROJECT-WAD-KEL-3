@@ -10,22 +10,22 @@
                 <form action="{{ route('admin.addDoctor') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="name">Doctor's Name:</label>
                         <input type="text" id="name" name="name" class="form-control" required>
+                        <label for="name">Doctor's Name</label>
                     </div>
 
                     <div class="form-group">
-                        <label for="specialization">Specialization:</label>
                         <input type="text" id="specialization" name="specialization" class="form-control" required>
+                        <label for="specialization">Specialization</label>
                     </div>
                     <div class="form-group">
-                        <label for="education">Education:</label>
                         <input type="text" id="education" name="education" class="form-control" required>
+                        <label for="education">Education</label>
                     </div>
 
                     <div class="form-group">
-                        <label for="image">Doctor's Image:</label>
                         <input type="file" id="image" name="image" class="form-control-file">
+                        <label for="image">Doctor's Image</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Add Doctor</button>
                 </form>
