@@ -11,6 +11,8 @@ use App\Models\Patient;
 use App\Models\User;
 use App\Models\Detail;
 use App\Models\Schedule;
+use App\Models\Medicin;
+use App\Models\Article;
 
 class AdminController extends Controller
 {

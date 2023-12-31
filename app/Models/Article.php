@@ -10,4 +10,11 @@ class Article extends Model
     use HasFactory;
     protected $table = 'article';
 
+    protected $fillable = [
+        'title',
+        'author',
+        'paragraph',
+        'date_of_writing',
+    ];
+
 }

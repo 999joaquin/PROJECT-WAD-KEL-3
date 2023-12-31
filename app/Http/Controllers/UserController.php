@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Appointment;
 use App\Models\Patient;
 use App\Models\User;
+use App\Models\Article;
 
 class UserController extends Controller
 {
