@@ -17,12 +17,12 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    function showPatientsDetails($patientId){ // najma
+    function showPatientsDetails($patientId){
             $patient = Patient::findOrFail($patientId);
             return view('admin.add-details', compact('patient'));
         }
 
-        function addPatientDetails(Request $request, $patientId){ // najma
+        function addPatientDetails(Request $request, $patientId){
             $request->validate([
                 'medical_record' => 'required',
                 'disease' => 'required',
@@ -39,17 +39,17 @@ class AdminController extends Controller
             return redirect()->route('admin.selectPatient')->with('success', 'Sukses');
         }
 
-        function selectPatient(){ // najma
+        function selectPatient(){
             $patients = Patient::all();
             return view('admin.select-patient', compact('patients'));
         }
 
-        function showPatientFullDetails($patientId){ // najma
+        function showPatientFullDetails($patientId){
             $patient = Patient::with('details')->findOrFail($patientId);
             return view('admin.patient-details', compact('patient'));
         }
 
-        function deleteDetail($detailId){ // najma
+        function deleteDetail($detailId){
             $detail = Detail::findOrFail($detailId);
             $detail -> delete();
 
