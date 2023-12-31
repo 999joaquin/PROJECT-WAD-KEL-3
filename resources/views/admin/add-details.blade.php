@@ -2,8 +2,8 @@
 @section('title', 'Add Medical Record')
 @section('content')
 <div class="container mt-4">
-    <h2>Add Medical Record for {{ $patient->name }}</h2>
-    
+    <h2>Add Medical Record for{{ $patient->name }}</h2>
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
