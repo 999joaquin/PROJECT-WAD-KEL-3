@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Doctor;
 
 class UserController extends Controller
 {
@@ -11,7 +13,8 @@ class UserController extends Controller
         return view('user.dashboard');
     }
 
-    function showPatientsForm(){
-        return view('user.register-patient.blade.php');
+    function listDoctors(){
+        $doctors = Doctor::all();
+        return view('user.list-doctors', compact('doctors'));
     }
 }
