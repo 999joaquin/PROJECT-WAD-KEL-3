@@ -9,12 +9,8 @@
                 <div class="card-body">
                     <form action="{{ route('admin.updateDoctor', $doctor->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-<<<<<<< HEAD
                         @method('PUT')
-=======
-                        @met
-
->>>>>>> a06abc02665788da6dde363ff686ca1df2da18ab
+                        
                         <div class="form-group">
                             <input type="text" id="name" name="name" class="form-control" value="{{ $doctor->name }}" required>
                             <label for="name">Doctor's Name:</label>
