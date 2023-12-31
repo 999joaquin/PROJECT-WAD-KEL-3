@@ -35,6 +35,8 @@ Route::middleware(['auth', 'user'])->group(function() {
     Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/user/patient-registration', [UserController::class, 'showPatientForm'])->name('user.patient.form');
 
+    Route::get('/doctors', [UserController::class, 'listDoctors'])->name('user.listDoctors');
+    Route::get('/doctors/{doctorId}/schedule', [UserController::class, 'viewDoctorSchedule'])->name('user.viewDoctorSchedule');
 });
 
 // Route Admin
