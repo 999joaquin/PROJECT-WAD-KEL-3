@@ -34,4 +34,9 @@ class AdminController extends Controller
         return view ('admin.add-schedule', compact('doctors'));
     }
 
+    function viewSchedules(){
+        $schedules = Schedule::with('doctor')->get();
+        return view('admin.view-schedules', compact('schedules'));
+    }
+
 }
