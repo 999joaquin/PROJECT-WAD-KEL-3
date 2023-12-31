@@ -4,7 +4,7 @@
     <div class="container mt-4">
         <div class="card">
             <div class="card-header">
-                <h1>Edit Medicine</h1>
+                <h1>Edit        Medicine</h1>
             </div>
             <div class="card-body">
             <a href="{{ route('admin.showMedicine') }}" class="btn btn-secondary mb-3">Kembali</a> 
