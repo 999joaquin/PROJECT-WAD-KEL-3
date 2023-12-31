@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Patients List</a>
+          <a class="nav-link" href="{{ route('admin.patients.dashboard') }}">Patients List</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('admin.viewAppointments') }}">View Appointments</a>
