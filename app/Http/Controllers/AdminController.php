@@ -95,7 +95,7 @@ class AdminController extends Controller
 
         $doctor->save();
 
-        return redirect()->route('admin.viewDoctors')->with('success', 'Doctor updated successfully.');
+        return redirect()->route('admin.viewDoctors')->with('success', 'Doctor updated successfully');
     }
 
     function deleteDoctor($id){
@@ -106,6 +106,6 @@ class AdminController extends Controller
         }
 
         $doctor->delete();
-        return redirect()->route('admin.viewDoctors')->with('success', 'Doctor deleted successfully.');
+        return redirect()->route('admin.viewDoctors')->with('success', 'Doctor deleted successfully');
     }
 }
