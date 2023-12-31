@@ -6,12 +6,15 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('user.showAppointmentForm') }}">Appointment</a>
+            <a class="nav-link" href="{{ route('user.showAppointmentForm') }}">Appointment</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+            <a class="nav-link" href="{{ route('user.articleIndexUser') }}">Article</a>
         </li>
-      </ul>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+        </li>
+    </ul>
       <span class="nav-text"></span>
     </div>
 </nav>

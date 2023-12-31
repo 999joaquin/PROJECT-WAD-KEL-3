@@ -1,26 +1,26 @@
-@extends('layouts.layoutAdmin')
-@section('title', 'Article')
+@extends('layouts.layoutUser')
+@section('title', 'Detail Article')
 @section('content')
 
 <div class="container">
     <h1>Article</h1>
     <div class="row">
-        @foreach ($article as $article)
+        {{-- @foreach ($article as $article) --}}
             <div class="col-md-10">
                 <div class="card" style="width: 64rem">
                     <div class="card-header">
-                        <h4>{{ $article->title }}</h4><p>{{ $article->id }}</p>
+                        <h4>{{ $singleArticle->title }}</h4>
                     </div>
                     <div class="card-body">
-                        <p>{{ $article->paragraph }}</p>
+                        <p>{{ $singleArticle->paragraph }}</p>
                     </div>
                     <div class="card-footer">
-                        <h6>{{ $article->author }}</h6>
-                        <p>{{  $article->date_of_writing  }}</p>
+                        <h6>{{ $singleArticle->author }}</h6>
+                        <p>{{  $singleArticle->date_of_writing  }}</p>
                     </div>
                 </div>
             </div>
-        @endforeach
+        {{-- @endforeach --}}
     </div>
 </div>
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +37,9 @@ Route::middleware(['auth', 'user'])->group(function() {
     Route::get('/user/appointment', [UserController::class, 'showAppointmentForm'])->name('user.showAppointmentForm');
     Route::get('/user/show-appointment-form', [UserController::class, 'showAppointmentForm'])->name('user.showAppointmentForm');
     Route::post('/user/create-appointment', [UserController::class, 'createAppointment'])->name('user.createAppointment');
+    Route::get('/user/article', [UserController::class, 'articleIndexUser'])->name('user.articleIndexUser'); // Apip
+    Route::get('/user/article/detail/{id}', [UserController::class,'articleDetailUser'])->name('user.articleDetailUser'); //Apip
+
 });
 
 // Route Admin
@@ -48,9 +52,15 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/appointments/{id}/edit', [AdminController::class, 'editAppointment'])->name('admin.editAppointment');
     Route::put('/admin/appointments/{id}', [AdminController::class, 'updateAppointment'])->name('admin.updateAppointment');
     Route::delete('/admin/appointments/{id}', [AdminController::class, 'deleteAppointment'])->name('admin.deleteAppointment');
+
     Route::get('/admin/article', [AdminController::class, 'articleIndex'])->name('admin.articleIndex'); // Apip
-    Route::get('/admin/article/detail', [AdminController::class,'articleDetail'])->name('admin.articleDetail'); //Apip
-    // Route::get('/admin/article/show', [AdminController::class,'show'])->name('admin.show'); //Apip
+    Route::get('/admin/article/detail/{id}', [AdminController::class,'articleDetail'])->name('admin.articleDetail'); //Apip
+    Route::get('/admin/article/create', [AdminController::class, 'articleCreate'])->name('admin.articleCreate'); //Apip
+    Route::post('/admin/article/create', [AdminController::class, 'store'])->name('admin.store'); //Apip
+    Route::get('/admin/article/detail/{id}/edit', [AdminController::class, 'articleEdit'])->name('admin.articleEdit'); //Apip
+    Route::put('/admin/article/detail/{id}', [AdminController::class, 'articleUpdate'])->name('admin.articleUpdate'); //Apip
+    Route::delete('/admin/article/detail/{id}', [AdminController::class, 'articleDelete'])->name('admin.articleDelete'); //Apip
+
 
 });
 

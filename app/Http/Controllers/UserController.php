@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Doctor;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Appointment;
+use App\Models\Article;
+
 
 class UserController extends Controller
 {
@@ -56,9 +58,26 @@ class UserController extends Controller
                          ->with('doctors', $doctors);
     }
 
-    function viewBerita(){
-        //
+    function articleIndexUser()
+    {
+        $article = Article::all();
+        return view('user.article.index', compact ('article'));
+
     }
+
+    // function articleDetailUser()
+    // {
+    //     $article = Article::all();
+    //     return view('user.article.detail', compact ('article'));
+    // }
+
+    function articleDetailUser($id)
+    {
+        $singleArticle = Article::find($id);
+        return view('user.article.detail', ['singleArticle' => $singleArticle]);
+    }
+
+
 
 }
 
