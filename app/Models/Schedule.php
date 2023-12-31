@@ -7,8 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
 {
-    protected $fillable = [
-        'nama_dokter', 'deskripsi','hari','jam_mulai', 'jam_selesai'
+    use HasFactory;
+
+    protected $filable = [
+        'doctor_id',
+        'day',
+        'start_time',
+        'end_time',
     ];
+
+    public function doctor(){
+        return $this->belongsTo(Doctor::class);
+    }
 }
 
