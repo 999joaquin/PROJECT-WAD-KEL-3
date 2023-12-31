@@ -9,6 +9,9 @@
           <a class="nav-link" href="{{ route('admin.patients.dashboard') }}">Patients List</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="{{ route('admin.selectPatient') }}">Add Details</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="{{ route('admin.viewAppointments') }}">View Appointments</a>
         </li>
         <li class="nav-item">
@@ -18,7 +21,13 @@
           <a class="nav-link" href="{{ route('admin.showAddDoctorForm') }}">Add Doctor</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('admin.showAddDoctorForm') }}">Add Schedule</a>
+          <a class="nav-link" href="{{ route('admin.addScheduleForm') }}">Add Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('admin.addMedicines') }}">Medicine</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('admin.articleIndex') }}">Article</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('logout') }}">Logout</a>
