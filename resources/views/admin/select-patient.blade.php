@@ -22,4 +22,20 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($patients as $patient)
+            <tr>
+                <th scope="row">{{ $patient->id }}</th>
+                <td>{{ $patient->name }}</td>
+                <td>{{ $patient->nim }}</td>
+                <td>{{ $patient->date_of_birth }}</td>
+                <td>{{ $patient->phone }}</td>
+                <td>
+                    <a href="{{ route('admin.details.create', $patient->id) }}" class="btn btn-primary btn-sm">Add Details</a>
+                    <a href="{{ route('admin.patientDetails', $patient->id) }}" class="btn btn-info btn-sm">Show Details</a>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+</div>
 @endsection
