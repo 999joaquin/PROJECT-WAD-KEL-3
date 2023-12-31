@@ -42,7 +42,7 @@ class AdminController extends Controller
                 'image' => $fileNameToStore
             ]);
 
-            return redirect()->route('admin.dashboard')->with('success', 'Doctor added successfully');
+            return redirect()->route('admin.dashboard')->with('success', 'Doctor added successfully.');
         } catch (\Exception $e) {
             \Log::error($e->getMessage());
             return redirect()->route('admin.dashboard')->with('error', 'Failed to add doctor.');
