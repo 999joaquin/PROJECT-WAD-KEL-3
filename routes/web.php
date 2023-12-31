@@ -48,6 +48,10 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/appointments/{id}/edit', [AdminController::class, 'editAppointment'])->name('admin.editAppointment');
     Route::put('/admin/appointments/{id}', [AdminController::class, 'updateAppointment'])->name('admin.updateAppointment');
     Route::delete('/admin/appointments/{id}', [AdminController::class, 'deleteAppointment'])->name('admin.deleteAppointment');
+    Route::get('/admin/article', [AdminController::class, 'articleIndex'])->name('admin.articleIndex'); // Apip
+    Route::get('/admin/article/detail', [AdminController::class,'articleDetail'])->name('admin.articleDetail'); //Apip
+    // Route::get('/admin/article/show', [AdminController::class,'show'])->name('admin.show'); //Apip
+
 });
 
 

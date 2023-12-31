@@ -35,9 +35,9 @@ class UserController extends Controller
             'appointment_time' => $validatedData['appointment_time'],
             'keluhan' => $validatedData['keluhan'],
         ]);
-    
+
         $appointment->save();
-    
+
         return redirect()->route('user.dashboard')->with('success', 'Appointment created successfully.');
     }
 
@@ -50,10 +50,15 @@ class UserController extends Controller
     function handleSpecialization(Request $request) {
         $specialization = $request->input('specialization');
         $doctors = Doctor::where('specialization', $specialization)->get();
-    
+
         return redirect()->route('user.showAppointmentForm')
                          ->with('selectedSpecialization', $specialization)
                          ->with('doctors', $doctors);
     }
 
+    function viewBerita(){
+        //
+    }
+
 }
+

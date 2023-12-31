@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Doctor;
 use App\Models\Appointment;
+use App\Models\Article;
 
 class AdminController extends Controller
 {
@@ -67,4 +68,17 @@ class AdminController extends Controller
 
         return redirect()->route('admin.viewAppointments')->with('success', 'Appointment deleted.');
     }
+
+    function articleIndex()
+    {
+        $article = Article::all();
+        return view('admin.article.index', compact ('article'));
+    }
+
+    function articleDetail()
+    {
+        $article = Article::all();
+        return view('admin.article.show', compact ('article'));
+    }
+
 }
