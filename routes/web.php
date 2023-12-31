@@ -43,6 +43,15 @@ Route::middleware(['auth', 'user'])->group(function() {
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/patients', [AdminController::class, 'viewPatients'])->name('admin.view.patients');
+
+    Route::get('/admin/schedules/create', [AdminController::class, 'showAddScheduleForm'])->name('admin.addScheduleForm');
+    Route::post('/admin/schedules', [AdminController::class, 'addSchedule'])->name('admin.addSchedule');
+    Route::get('/admin/schedules', [AdminController::class, 'viewSchedules'])->name('admin.viewSchedules');
+    Route::get('/admin/schedules/{schedule}/edit', [AdminController::class, 'editSchedule'])->name('admin.editSchedule');
+    Route::put('/admin/schedules/{schedule}', [AdminController::class, 'updateSchedule'])->name('admin.updateSchedule');
+    Route::delete('/admin/schedules/{schedule}', [AdminController::class, 'deleteSchedule'])->name('admin.deleteSchedule');
+ 
+
+
 });
 
-Route::get('/admin/patients', [AdminController::class, 'viewPatients'])->name('admin.view.patients');
