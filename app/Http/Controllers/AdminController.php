@@ -39,4 +39,10 @@ class AdminController extends Controller
         return view('admin.view-schedules', compact('schedules'));
     }
 
+    function editSchedule($scheduleId){
+        $schedule = Schedule::findOrFail($scheduleId);
+        $doctors =  Doctor::all();
+        return view('admin.edit-schedule', compact('schedule', 'doctors'));
+    }
+
 }
