@@ -15,4 +15,5 @@ class Detail extends Model
     {
         return $this->belongsTo(Patient::class);
     }
+    
 }
